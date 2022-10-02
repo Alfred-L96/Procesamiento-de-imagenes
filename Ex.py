@@ -6,13 +6,13 @@ from tkinter.tix import Tree
 import cv2
 import os.path as path
 import numpy as np
-CapPantalla = cv2.VideoCapture(0)
+CPantalla = cv2.VideoCapture(0)
 n='0'
 nn =1
-if not CapPantalla.isOpened():
+if not CPantalla.isOpened():
     raise IOError("No se puede abrir la camara")
 while True:
-    ret, frame = CapPantalla.read()
+    ret, frame = CPantalla.read()
     frame = cv2.resize(frame, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA)
     cv2.imshow('Input',frame)
     c = cv2.waitKey(1)
@@ -20,8 +20,8 @@ while True:
     if c == 27:
         break
     elif c == 32:
-        CapPantalla.set(cv2.CAP_PROP_FRAME_WIDTH,720) # ancho
-        CapPantalla.set(cv2.CAP_PROP_FRAME_HEIGHT,640) # alto
+        CPantalla.set(cv2.CAP_PROP_FRAME_WIDTH,720) # ancho
+        CPantalla.set(cv2.CAP_PROP_FRAME_HEIGHT,640) # alto
         NombreImagen = "rostro"
         ExtencionDeImagen = ".jpg"
         image = 'C:/Users/santi/Procesamiento de imagenes/Examen1raParcial/rostro'+n+ExtencionDeImagen
@@ -60,5 +60,5 @@ while True:
             cv2.imshow("Cartoon", cartoon)
       
 
-CapPantalla.release()
+CPantalla.release()
 cv2.destroyAllWindows()
